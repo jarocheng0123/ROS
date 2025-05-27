@@ -79,3 +79,38 @@ chmod +x ros2.sh
 - 运行脚本前请确保系统已联网，且具备 sudo 权限。
 - 若在安装过程中遇到问题，可查看 `install.log` 文件获取详细信息，或参考最终提示中的常见问题解决建议。
 - 部分功能（如桌面快捷方式创建、功能测试）可能需要图形界面支持，请确保系统具备相应环境。
+
+## 七、安装 UR5e 驱动
+### 1. 驱动安装命令
+```bash
+sudo apt install -y ros-jazzy-ur-robot-driver ros-jazzy-ur-msgs ros-jazzy-control-msgs
+```
+- **说明**：
+- `ros-jazzy-ur-robot-driver` Universal Robots 机器人的官方 ROS 2 驱动程序
+- `ros-jazzy-ur-msgs` Universal Robots 机器人专用的 ROS 2 消息定义 
+- `ros-jazzy-control-msgs` ROS 2 机器人控制的通用消息定义
+
+### 2.放行 30001（RTDE）和 29999（Dashboard）端口
+```bash
+sudo ufw allow 29999/tcp
+sudo ufw allow 30001/tcp
+```
+
+### 3.创建桌面快捷方式
+```bash
+cat << "EOF" > ~/桌面/UR5e_ROS2驱动.desktop
+[Desktop Entry]
+Name=UR5e_ROS2驱动
+Comment=Launch UR5e ROS2 driver for URSim
+Exec=bash -c 'source /opt/ros/jazzy/setup.bash && export ROBOT_IP=127.0.0.1 && ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur5e robot_ip:=127.0.0.1 use_fake_hardware:=false'
+Icon=application-x-executable
+Terminal=true
+Type=Application
+Categories=Development;Robot;
+EOF
+```
+
+### 4.快捷方式执行权限
+```bash
+chmod +x ~/桌面/UR5e_ROS2驱动.desktop
+```
