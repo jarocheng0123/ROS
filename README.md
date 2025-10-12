@@ -1,4 +1,8 @@
-# ROS 自动化安装脚本
+# [ROS 自动化安装脚本](https://fishros.org.cn/forum/topic/3923/ros%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85)
+
+```bash
+wget http://fishros.com/install -O fishros && bash fishros
+```
 
 ## 一、概述
 本脚本专为在 Ubuntu 系统上自动化安装 ROS（机器人操作系统）而设计，提供了用户友好的交互界面，支持多种 ROS 版本的选择，能自动检测系统环境、优化镜像源、管理密钥、安装核心组件、配置环境变量、创建桌面快捷方式、设置开机自启等功能，并在安装完成后进行验证和功能测试，最后给出相应提示和常见问题解决建议。
