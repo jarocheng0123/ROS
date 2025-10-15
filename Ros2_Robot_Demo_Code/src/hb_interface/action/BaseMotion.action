@@ -1,0 +1,6 @@
+uint8 mode #0:直线,1:旋转,2:正方形
+float32 value
+---
+bool sucess
+---
+float32 percentage 
